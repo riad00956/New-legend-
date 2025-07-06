@@ -1,7 +1,35 @@
+# render.yaml - Render Configuration File for LEGEND BOYS Website
+
+# This specifies the version of the Render Blueprint spec.
+# It's good practice to always include this.
+apiVersion: services.render.com/v1
+kind: Service
+
 services:
-  - type: web
-    name: legend-boys-web
-    env: static
-    staticPublishPath: public
-    buildCommand: ""
+  - type: web # Specifies the service type as a web service.
+    name: legend-boys-web # A unique name for this specific web service on Render.
+    env: static # Indicates that this is a static site.
+    
+    # The directory containing your static assets (HTML, CSS, JS, images).
+    # Based on your previous setup where index.html, css/, js/, img/ are in the root
+    # of your repository, 'public' might not be the correct path.
+    # If your index.html and other assets are directly in the root of your repo,
+    # you should use '.' (dot) here.
+    # If you later move them into a folder named 'public' in your repo, then 'public' is correct.
+    staticPublishPath: . # Assuming your static files are in the root of your repository.
+                         # If they are in a 'public' folder, use 'public'.
+    
+    # Command to build your static site.
+    # For plain HTML, CSS, and JS, no build command is typically needed.
+    # If you were using a front-end framework (React, Vue) or a static site generator (Jekyll, Hugo),
+    # you would put the build command here (e.g., 'npm run build' or 'jekyll build').
+    buildCommand: "" # No build command needed for this simple static site.
+    
+    # Controls whether Render builds and deploys preview environments for pull requests.
+    # Setting to false means pull requests won't automatically trigger preview deployments.
     pullRequestPreviewsEnabled: false
+
+# (Optional) You can add custom domains here directly in the blueprint.
+# customDomains:
+#   - legendboys.com
+#   - www.legendboys.com
