@@ -1,0 +1,648 @@
+/* General Styling */
+:root {
+    --dark-bg: #0d0d0d;
+    --red-text-color: #ff3333; /* Pure red for text */
+    --red-button-bg: #cc0000; /* Solid red for buttons */
+    --red-button-hover: #ff0000;
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--red-text-color); /* Applied to body */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    scroll-behavior: smooth;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Red Text & Button Styling - Replaced RGB with solid red */
+.red-text {
+    color: var(--red-text-color);
+}
+
+.red-button {
+    background-color: var(--red-button-bg);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    color: var(--dark-bg); /* Text inside button will be dark */
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.red-button:hover {
+    background-color: var(--red-button-hover);
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7), 0 0 25px rgba(255, 0, 0, 0.5);
+}
+
+/* 1. Intro Screen */
+.intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.intro-screen.fade-out {
+    opacity: 0;
+    pointer-events: none; /* Make it unclickable once faded */
+}
+
+.intro-logo {
+    width: 250px;
+    height: auto;
+    animation: intro-logo-bounce 1.5s ease-out forwards;
+}
+
+@keyframes intro-logo-bounce {
+    0% { transform: scale(0.5); opacity: 0; }
+    70% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Header (Only Hamburger) */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* Push hamburger to right */
+    align-items: center;
+    padding: 15px 25px;
+    background: rgba(13, 13, 13, 0.8);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hamburger-menu {
+    background: none;
+    border: none;
+    color: var(--red-text-color); /* Red */
+    font-size: 1.8em;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it's above sidebar when open */
+}
+
+/* Sidebar Menu */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Hidden by default */
+    width: 250px;
+    height: 100%;
+    background: rgba(20, 20, 20, 0.95);
+    padding-top: 80px; /* Space for header */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.7);
+    transition: left 0.3s ease-in-out;
+    z-index: 999;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-links li {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-links li:last-child {
+    border-bottom: none;
+}
+
+.sidebar-links a {
+    color: var(--red-text-color); /* Red */
+    text-decoration: none;
+    font-size: 1.1em;
+    display: block;
+    transition: color 0.2s ease-in-out;
+}
+
+.sidebar-links a:hover {
+    color: var(--red-button-hover); /* Brighter red on hover */
+}
+
+
+/* Homepage Specifics - UPDATED FOR VARIANT */
+.homepage-variant {
+    justify-content: center; /* Center content vertically */
+    padding-top: 0; /* No need for header padding here, logo is inside */
+}
+
+.homepage-logo {
+    width: 250px; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.homepage-variant .team-name {
+    font-size: 5em; /* Larger font size */
+    margin-bottom: 15px;
+    color: var(--red-text-color); /* Solid red */
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.8); /* Red glow */
+}
+
+.homepage-variant .tagline {
+    font-size: 1.8em; /* Larger tagline */
+    max-width: 800px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: var(--red-text-color);
+}
+
+.homepage-variant .description {
+    font-size: 1.1em;
+    max-width: 600px;
+    margin-bottom: 40px;
+    line-height: 1.5;
+    color: var(--red-text-color);
+}
+
+.social-links-vertical {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 15px; /* Space between buttons */
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 300px; /* Limit width of buttons */
+}
+
+.social-button {
+    background-color: #333; /* Dark background for social buttons */
+    color: var(--red-text-color); /* Red text for social buttons */
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: flex; /* For icon and text alignment */
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.social-button i {
+    margin-right: 10px;
+    font-size: 1.3em;
+}
+
+.social-button:hover {
+    background-color: var(--red-button-bg); /* Red on hover */
+    color: var(--dark-bg); /* Dark text on hover */
+    transform: translateX(10px); /* Slide effect */
+}
+
+/* Specific social button colors (optional, if you want brand colors) */
+/*
+.social-button.youtube:hover { background-color: #ff0000; color: #fff; }
+.social-button.tiktok:hover { background-color: #000; color: #69c9d0; }
+.social-button.facebook-page:hover, .social-button.facebook-group:hover { background-color: #1877f2; color: #fff; }
+*/
+
+.moderator-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    font-size: 1.2em;
+    color: var(--red-text-color);
+}
+
+.moderator-icon {
+    width: 40px; /* Adjust size */
+    height: 40px;
+    margin-right: 15px;
+    border-radius: 50%; /* If it's a profile pic */
+    border: 2px solid var(--red-text-color);
+}
+
+.moderator-name {
+    font-weight: bold;
+    color: var(--red-text-color);
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+
+/* Members Page */
+.members-page {
+    padding-top: 100px; /* Keep padding for sections after homepage */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.members-page h2 {
+    width: 100%;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    color: var(--red-text-color); /* Solid red */
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    text-align: center;
+}
+
+.members-container {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.member-list {
+    flex: 1;
+    min-width: 250px;
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); /* Red glow */
+    max-height: 600px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.member-list::-webkit-scrollbar {
+    width: 8px;
+}
+.member-list::-webkit-scrollbar-track {
+    background: #333;
+    border-radius: 10px;
+}
+.member-list::-webkit-scrollbar-thumb {
+    background-color: var(--red-button-bg); /* Red scrollbar thumb */
+    border-radius: 10px;
+}
+
+.member-name {
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 1.1em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    color: var(--red-text-color); /* Red */
+}
+
+.member-name:hover {
+    background-color: rgba(50, 50, 50, 0.5);
+    color: var(--red-button-hover); /* Brighter red on hover */
+}
+
+.member-name.active {
+    background-color: rgba(50, 50, 50, 0.8);
+    color: var(--red-button-hover); /* Brighter red when active */
+    font-weight: bold;
+}
+
+.member-profile-preview {
+    flex: 2;
+    min-width: 300px;
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); /* Red glow */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.member-profile-preview img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid var(--red-text-color); /* Red border */
+}
+
+.member-profile-preview h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: var(--red-text-color); /* Red */
+}
+
+.member-profile-preview p {
+    font-size: 1em;
+    margin-bottom: 8px;
+    max-width: 400px;
+    line-height: 1.5;
+    color: var(--red-text-color); /* Red */
+}
+
+.member-profile-preview .social-link {
+    color: var(--red-text-color); /* Red */
+    text-decoration: none;
+    margin-top: 10px;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.member-profile-preview .social-link:hover {
+    color: var(--red-button-hover); /* Brighter red on hover */
+}
+
+/* Features Page */
+.features-page h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: var(--red-text-color); /* Red */
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.features-list {
+    list-style: none;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+.features-list li {
+    background: rgba(30, 30, 30, 0.8);
+    padding: 15px 25px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.2); /* Red glow */
+    transition: transform 0.3s ease;
+    color: var(--red-text-color); /* Red */
+}
+
+.features-list li:hover {
+    transform: translateX(10px);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); /* Red glow */
+}
+
+/* Gallery Page */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 30px;
+}
+
+.gallery-item {
+    background-color: rgba(50, 50, 50, 0.7);
+    height: 200px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: rgba(255, 255, 255, 0.5);
+    border: 2px dashed rgba(255, 0, 0, 0.3); /* Red dashed border */
+    transition: transform 0.3s ease;
+}
+
+.gallery-item.placeholder::before {
+    content: "Image/Video Placeholder";
+    font-size: 0.8em;
+    color: var(--red-text-color); /* Red */
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); /* Red glow */
+}
+
+.placeholder-text {
+    margin-top: 20px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Story Page */
+.story-page p {
+    max-width: 800px;
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-top: 20px;
+    text-align: justify;
+    color: var(--red-text-color); /* Red */
+}
+
+/* Moderator & Help Page */
+.moderator-help-page .moderator-link {
+    color: var(--red-text-color); /* Red */
+    font-size: 1.3em;
+    margin-top: 20px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.moderator-help-page .moderator-link:hover {
+    color: var(--red-button-hover); /* Brighter red on hover */
+    text-decoration: underline;
+}
+
+/* Login/Join System */
+.login-join-page h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: var(--red-text-color); /* Red */
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.join-form {
+    background: rgba(30, 30, 30, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3); /* Red glow */
+    width: 100%;
+    max-width: 500px;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+    color: var(--red-text-color); /* Red */
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="url"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #555;
+    background-color: #222;
+    color: var(--red-text-color); /* Red */
+    border-radius: 5px;
+    font-family: sans-serif; /* Use a standard font for input */
+    font-size: 1em;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--red-text-color);
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.5); /* Red glow */
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.submit-button {
+    width: 100%;
+    font-size: 1.2em;
+    padding: 15px;
+}
+
+/* Footer */
+.footer {
+    width: 100%;
+    padding: 20px;
+    background: rgba(13, 13, 13, 0.8);
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: auto; /* Push footer to bottom in sections */
+    color: var(--red-text-color); /* Red */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .homepage-variant .team-name {
+        font-size: 3.5em;
+    }
+
+    .homepage-variant .tagline {
+        font-size: 1.4em;
+    }
+
+    .homepage-variant .description {
+        font-size: 0.9em;
+    }
+
+    .social-links-vertical {
+        max-width: 250px;
+    }
+
+    .social-button {
+        font-size: 1em;
+    }
+
+    .social-button i {
+        margin-right: 8px;
+        font-size: 1.2em;
+    }
+
+    .moderator-info {
+        font-size: 1em;
+    }
+
+    .hamburger-menu {
+        font-size: 1.5em;
+    }
+
+    .sidebar {
+        width: 200px;
+        left: -200px;
+    }
+
+    .members-page {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .member-list, .member-profile-preview {
+        min-width: unset;
+        width: 90%;
+    }
+
+    .section {
+        padding: 15px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .join-form {
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .homepage-variant .team-name {
+        font-size: 2.5em;
+    }
+    .homepage-variant .tagline {
+        font-size: 1.2em;
+    }
+    .homepage-variant .description {
+        font-size: 0.8em;
+    }
+    .red-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    .homepage-logo {
+        width: 200px;
+    }
+    .sidebar-links a {
+        font-size: 1em;
+    }
+    .member-profile-preview img {
+        width: 100px;
+        height: 100px;
+    }
+  }
+  
