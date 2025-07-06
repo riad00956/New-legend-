@@ -11,15 +11,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* Ensuring all elements use the primary red color where applicable */
+    color: var(--red-text-color); 
 }
 
 body {
     font-family: 'Orbitron', sans-serif;
     background-color: var(--dark-bg);
-    color: var(--red-text-color); /* Applied to body */
     overflow-x: hidden; /* Prevent horizontal scroll */
     scroll-behavior: smooth;
 }
+
+/* Base text color overriden by specific elements */
+body, h1, h2, h3, p, label, a {
+    color: var(--red-text-color);
+}
+
 
 .hidden {
     display: none !important;
@@ -43,7 +50,7 @@ body {
     transform: translateY(0);
 }
 
-/* Red Text & Button Styling - Replaced RGB with solid red */
+/* Solid Red Text & Button Styling */
 .red-text {
     color: var(--red-text-color);
 }
@@ -170,8 +177,7 @@ body {
     color: var(--red-button-hover); /* Brighter red on hover */
 }
 
-
-/* Homepage Specifics - UPDATED FOR VARIANT */
+/* Homepage Specifics - Matching screenshot */
 .homepage-variant {
     justify-content: center; /* Center content vertically */
     padding-top: 0; /* No need for header padding here, logo is inside */
@@ -238,13 +244,6 @@ body {
     color: var(--dark-bg); /* Dark text on hover */
     transform: translateX(10px); /* Slide effect */
 }
-
-/* Specific social button colors (optional, if you want brand colors) */
-/*
-.social-button.youtube:hover { background-color: #ff0000; color: #fff; }
-.social-button.tiktok:hover { background-color: #000; color: #69c9d0; }
-.social-button.facebook-page:hover, .social-button.facebook-group:hover { background-color: #1877f2; color: #fff; }
-*/
 
 .moderator-info {
     display: flex;
@@ -644,5 +643,4 @@ body {
         width: 100px;
         height: 100px;
     }
-  }
-  
+}
