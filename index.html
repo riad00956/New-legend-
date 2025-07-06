@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGEND BOYS Official Website</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div id="intro-screen" class="intro-screen">
+        <img src="img/legend-boys-logo.png" alt="LEGEND BOYS Logo" class="intro-logo">
+    </div>
+
+    <div id="main-content" class="main-content hidden">
+
+        <header class="header">
+            <button class="hamburger-menu" id="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </header>
+
+        <nav class="sidebar" id="sidebar">
+            <ul class="sidebar-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#members">Members</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#moderator-help">Moderator & Help</a></li>
+                <li><a href="#login-join">Login / Join</a></li>
+            </ul>
+        </nav>
+
+        <section id="home" class="section homepage homepage-variant active"> <img src="img/legend-boys-logo.png" alt="LEGEND BOYS Logo" class="homepage-logo">
+            <h1 class="team-name red-text">LEGEND BOYS</h1>
+            <p class="tagline larger">More Than A Team, We Are a Legacy</p>
+            <p class="description"><b>LEGEND BOYS (LBS)</b> is not just a group - it's a mindset. Built on loyalty, driven by respect, and fueled by fearless attitude, we walk our own path and create our own history.</p>
+            <div class="social-links-vertical">
+                <a href="https://youtube.com/@legend_boys_760?si=Fk0UaXwgaDLzOP3T" target="_blank" aria-label="YouTube" class="social-button youtube"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="https://www.tiktok.com/@legend_boys_760" target="_blank" aria-label="TikTok" class="social-button tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+                <a href="https://www.facebook.com/share/1Axn63wq9Y/" target="_blank" aria-label="Facebook Page" class="social-button facebook-page"><i class="fab fa-facebook"></i> Facebook Page</a>
+                <a href="https://www.facebook.com/groups/699029456296009" target="_blank" aria-label="Facebook Group" class="social-button facebook-group"><i class="fab fa-facebook"></i> Facebook Group</a>
+            </div>
+            <div class="moderator-info">
+                <img src="img/moderator-icon.png" alt="Moderator Icon" class="moderator-icon">
+                <span>Moderator: <span class="moderator-name">RAH</span></span>
+            </div>
+            <button class="join-now-button red-button" onclick="location.hash='#login-join'">Join Now</button>
+        </section>
+
+        <section id="members" class="section members-page hidden">
+            <h2>Our Legendary Members</h2>
+            <div class="members-container">
+                <div class="member-list" id="member-list">
+                    <p class="initial-prompt">Click a member name to view profile.</p>
+                </div>
+                <div class="member-profile-preview" id="member-profile-preview">
+                    <h3>Select a Member</h3>
+                    <p>Profiles will appear here.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="section features-page hidden">
+            <h2>Key Features</h2>
+            <ul class="features-list">
+                <li>Join system with profile form</li>
+                <li>Fully Responsive Layout (Desktop + Mobile)</li>
+                <li>Dynamic Member Updates</li>
+                <li>Section-Based Navigation</li>
+                <li>Gallery Management (Placeholder)</li>
+            </ul>
+        </section>
+
+        <section id="gallery" class="section gallery-page hidden">
+            <h2>Our Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item placeholder"></div>
+                <div class="gallery-item placeholder"></div>
+                <div class="gallery-item placeholder"></div>
+                <div class="gallery-item placeholder"></div>
+                <div class="gallery-item placeholder"></div>
+                <div class="gallery-item placeholder"></div>
+            </div>
+            <p class="placeholder-text">Media upload/view system coming soon!</p>
+        </section>
+
+        <section id="story" class="section story-page hidden">
+            <h2>Our Story</h2>
+            <p>We are more than a team — we are legends, brothers in arms, and creators of a new culture.</p>
+            </section>
+
+        <section id="moderator-help" class="section moderator-help-page hidden">
+            <h2>Moderator & Help</h2>
+            <p>For any assistance, please contact our moderator:</p>
+            <a href="https://www.facebook.com/share/1Xr3QcsK8P/" target="_blank" class="moderator-link">
+                <i class="fab fa-facebook"></i> Moderator Profile
+            </a>
+            </section>
+
+        <section id="login-join" class="section login-join-page hidden">
+            <h2>Join LEGEND BOYS</h2>
+            <form id="join-form" class="join-form">
+                <div class="form-group">
+                    <label for="memberName">Name:</label>
+                    <input type="text" id="memberName" required>
+                </div>
+                <div class="form-group">
+                    <label for="memberAge">Age:</label>
+                    <input type="number" id="memberAge" required>
+                </div>
+                <div class="form-group">
+                    <label for="memberBio">Bio:</label>
+                    <textarea id="memberBio" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="memberImageUrl">Image URL (Google Photos Link):</label>
+                    <input type="url" id="memberImageUrl" placeholder="e.g., https://photos.app.goo.gl/q6e4VYvFtw32EndH6" required>
+                </div>
+                <div class="form-group">
+                    <label for="memberFacebookId">Facebook Profile Link:</label>
+                    <input type="url" id="memberFacebookId" placeholder="e.g., https://www.facebook.com/your.profile" required>
+                </div>
+                <button type="submit" class="submit-button red-button">Submit & Join</button>
+            </form>
+        </section>
+
+        <footer class="footer">
+            <p>©dev </> rah server | code 301</p>
+        </footer>
+
+    </div> <script src="js/script.js"></script>
+</body>
+  </html>
+  
