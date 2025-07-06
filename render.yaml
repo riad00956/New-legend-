@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: legend-boys-web
+    env: static
+    staticPublishPath: public
+    buildCommand: ""
+    pullRequestPreviewsEnabled: false
